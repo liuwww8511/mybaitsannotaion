@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vivi.mybatis.dao.EmployeeMapper">
+<!--	<select id="getEmployeeid" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select id,last_name,gender,email from tbl_employee1 where id = #{she}-->
+<!--	</select>-->
+
+<!--	<insert id="addEmployee" parameterType="com.vivi.mybatis.beans.Employee" useGeneratedKeys="true" keyProperty="id">-->
+<!--		insert into tbl_employee1 (last_name,email,gender ) values(#{lastName},#{email},#{gender})-->
+<!--	</insert>-->
+
+<!--	<update id="updateEmployee" parameterType="com.vivi.mybatis.beans.Employee">update tbl_employee1 set last_name =-->
+<!--		#{lastname} where id = #{id}-->
+<!--	</update>-->
+
+<!--	<delete id="deletEmployee" parameterType="Integer">-->
+<!--		delete from tbl_employee1 where id = #{id}-->
+<!--	</delete>-->
+<!--	&lt;!&ndash;>public Employee selectmanyfield(String lastname, Integer gender)&ndash;&gt;-->
+<!--	<select id="selectmanyfield" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--      select * from tbl_employee1 where last_name = #{param1} and gender = #{param2}-->
+<!--	</select>-->
+<!--	&lt;!&ndash;-->
+<!--	  public Employee selectmap(Map<String,Object> map);&ndash;&gt;-->
+
+<!--&lt;!&ndash;	<select id="selectmap" resultType="com.vivi.mybatis.beans.Employee">&ndash;&gt;-->
+<!--&lt;!&ndash;		select * from tbl_employee1 where last_name = #{lastname} and gender = #{gender}&ndash;&gt;-->
+<!--&lt;!&ndash;	</select>&ndash;&gt;-->
+
+<!--	&lt;!&ndash; public Employee selectEmployee(Employee employee); &ndash;&gt;-->
+<!--	<select id="selectEmployee" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select * from tbl_employee1 where last_name = #{lastname}-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash;public Employee selectfield(@Param("lastname") String lastname,@Param("gender") Integer gender); &ndash;&gt;-->
+<!--	<select id="selectfield" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select * from ${tablename} where last_name = #{lastname}-->
+<!--	</select>-->
+
+
+
+<!--	&lt;!&ndash;public Employee selecttwofield(String lastname,Integer gender);&ndash;&gt;-->
+<!--	<select id = "selecttwofield"  resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select * from tbl_employee1 where last_name = #{0} and gender = #{1}-->
+<!--	</select>-->
+
+
+<!--	&lt;!&ndash; public Employee selectEmp(Employee employee);&ndash;&gt;-->
+<!--	<select id = "selectEmp"  resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select * from tbl_employee1 where last_name = #{lastname} and gender = #{gender}-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash; public Employee slelectparam(@Param("lastname") String lastanme, Integer gender); &ndash;&gt;-->
+<!--	<select id="slelectparam" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select * from tbl_employee1 where last_name = #{lastname}-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash;public List<Employee> selectList(); &ndash;&gt;-->
+<!--	<select id="selectList" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select * from tbl_employee1-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash;  public Map<String,Object>  selectmap(Integer id); &ndash;&gt;-->
+<!--	<select id="selectmap" resultType="java.util.HashMap">-->
+<!--		select * from tbl_employee1 where id = #{id}-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash;  public Map<String,Object>  selectmanymap(Integer id);; &ndash;&gt;-->
+<!--	<select id="selectmanymap" resultType="java.util.HashMap">-->
+<!--		select * from tbl_employee1-->
+<!--	</select>-->
+<!--   &lt;!&ndash; public Employee getEmployeeidDep(Integer id);&ndash;&gt;-->
+<!--	&lt;!&ndash; List<Employee> getList(); &ndash;&gt;-->
+<!--	<select id="getList" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select id,last_name,gender,email from ${name}-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash; public Map<String,Object> getEmployeeByIdReturnMap(Integer id );&ndash;&gt;-->
+<!--	<select id="getEmployeeByIdReturnMap" resultType="java.util.HashMap">-->
+<!--		select id,last_name,gender,email from tbl_employee1 where id = #{id}-->
+<!--	</select>-->
+
+
+<!--	&lt;!&ndash; public Map<String,Object> getAllEmpsReturnMap(Integer id );&ndash;&gt;-->
+<!--	<select id="getmanymap" resultType="java.util.HashMap">-->
+<!--		select id,last_name,gender,email from tbl_employee1-->
+<!--	</select>-->
+
+<!--	&lt;!&ndash;public Employee selectMapping(Integer id); resultMap 规则名字&ndash;&gt;-->
+<!--	&lt;!&ndash; id是针对主键 &ndash;&gt;-->
+<!--	<select id="selectMapping" resultMap="vivi">-->
+<!--		select id,last_name la,gender,email from tbl_employee1 where id = #{id}-->
+<!--	</select>-->
+<!--	<resultMap id="vivi" type="com.vivi.mybatis.beans.Employee">-->
+<!--        <id column="id"  property="id"></id>-->
+<!--		<result column="la" property="lastName" ></result>-->
+<!--		<result column="gender" property="gender" ></result>-->
+<!--		<result column="email" property="email" ></result>-->
+<!--	</resultMap>-->
+
+
+
+<!--	<select id="one" resultType="com.vivi.mybatis.beans.Employee">-->
+<!--		select id,last_name,gender,email from ${name}-->
+<!--	</select>-->
+
+
+	<!-- public Employee selectrelation(Integer id);-->
+	<select id = "selectrelation" resultMap="vivi2">
+		SELECT id,last_name,email,gender,did
+		FROM tbl_employee1 where id = #{id}
+	</select>
+	<resultMap id="vivi2" type="com.vivi.mybatis.beans.Employee">
+		<id column="id" property="id"></id>
+		<result column="last_name" property="lastName"></result>
+		<result column="email" property="email"></result>
+		<result column="gender" property="gender"></result>
+		<association property="dep" select = "com.vivi.mybatis.dao.DepartmentMapper.getone1"
+		column="did">
+		</association>
+	</resultMap>
+
+
+	<!--selectrelation1-->
+	<select id = "selectrelation1" resultMap="vivi3">
+		SELECT e.id eid, e.last_name lt, e.email,e.gender ,d.id did, d.dept_name
+		FROM tbl_employee1 e , Department d
+		WHERE e.did = d.id  AND e.id = #{id}
+	</select>
+	<resultMap id="vivi3" type="com.vivi.mybatis.beans.Employee">
+		<id column="eid" property="id"></id>
+		<result column="lt" property="lastName"></result>
+		<result column="email" property="email"></result>
+		<result column="gender" property="gender"></result>
+		<association property="dep" javaType="com.vivi.mybatis.beans.Deparment"  column="did" >
+			<id column="did" property="id"></id>
+			<result column="dept_name" property="deptname"></result>
+		</association>
+	</resultMap>
+
+
+
+
+
+
+
+
+
+
+</mapper>
