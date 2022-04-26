@@ -4,6 +4,7 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.vivi.mybatis.beans.Employee;
 import com.vivi.mybatis.dao.EmployeeMapper;
 
+import com.vivi.mybatis.dao.EmployeeMapperDynamicSQL;
 import org.apache.ibatis.io.Resources;
 
 
@@ -24,7 +25,7 @@ public class Testmybatais {
 
 
     @Test
-    public void ass1() throws IOException {
+    public void updateEmpByConditionSet() throws IOException {
 
         String resoruce = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resoruce);
@@ -32,10 +33,14 @@ public class Testmybatais {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try{
             //代理类invoke方法
-            EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-            System.out.println(mapper);
-            Employee selectrelation = mapper.selectrelation1(21);
-            System.out.println(selectrelation);
+            EmployeeMapperDynamicSQL mapper = sqlSession.getMapper(EmployeeMapperDynamicSQL.class);
+            Employee employee = new Employee();
+            employee.setId(21);
+            employee.setLastName("vivi2");
+            employee.setGender(1);
+
+            mapper.updateEmpByConditionSet(employee);
+
 //            System.out.println(selectrelation.getDep().getDeptname());
 //            Employee employee = new Employee(21,"afs",1,"vivi@qq.com");
 
