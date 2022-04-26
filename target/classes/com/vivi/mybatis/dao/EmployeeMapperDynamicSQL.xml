@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vivi.mybatis.dao.EmployeeMapperDynamicSQL">
+	
+  <!--public List<Employee> getEmpsByConditionIfWhere(Employee Condition);-->
+	<select id="getEmpsByConditionIfWhere" resultType="com.vivi.mybatis.beans.Employee">
+		select id,last_name,email,gender from tbl_employee1
+		<where>
+		<if test="id!=null">
+		      id = #{id} and
+		</if>
+		<if	test="lastName!=null">
+			 last_name = #{lastName} and
+		</if>
+		<if	test="email!=null">
+			 email = #{email}
+		</if>
+		<if	test="gender!=null">
+			 gender = #{gender}
+		</if>
+	</where>
+	</select>
+
+
+	<!--public void  updateEmpByConditionSet(Employee Condition);-->
+	<update id="updateEmpByConditionSet">
+		update tbl_employee1
+		<trim prefix="set"	suffixOverrides=",">
+		<if test="lastName!=null">
+			last_name = #{lastName},
+		</if>
+		<if test="gender!=null">
+			gender = #{gender},
+		</if>
+		</trim>
+		where id = #{id}
+
+	</update>
+	
+</mapper>
