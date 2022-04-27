@@ -32,9 +32,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="1bae8542-3498-4c61-874f-4523aa7f9cd0" object-ref="schemas/mysql/tables/tbl_employee1" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="1bae8542-3498-4c61-874f-4523aa7f9cd0" />

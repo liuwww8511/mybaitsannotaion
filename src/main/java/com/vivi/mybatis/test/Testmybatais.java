@@ -27,6 +27,34 @@ import java.util.Map;
 public class Testmybatais {
 
 
+
+
+    @Test
+    public void getone4() throws IOException {
+
+        String resoruce = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resoruce);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try{
+            //代理类invoke方法
+            EmployeeMapperDynamicSQL mapper = sqlSession.getMapper(EmployeeMapperDynamicSQL.class);
+            Employee employee = new Employee();
+            employee.setId(21);
+//            employee.setLastName("vivi2");
+            employee.setGender(1);
+
+            List<Employee> empsByConditionIfWhere = mapper.getEmpsByConditionIfWhere(employee);
+            System.out.println(empsByConditionIfWhere);
+//            System.out.println(selectrelation.getDep().getDeptname());
+//            Employee employee = new Employee(21,"afs",1,"vivi@qq.com");
+
+
+        }
+        finally {
+            sqlSession.commit();
+        }
+    }
     @Test
     public void getone2() throws IOException {
 
