@@ -1,11 +1,23 @@
 package com.vivi.mybatis.beans;
 
+import java.util.List;
+
 public class Deparment {
 
     private  Integer id;
 
     private  String deptname;
 
+
+    private List<Employee> emps;
+
+    public List<Employee> getEmps() {
+        return emps;
+    }
+
+    public void setEmps(List<Employee> emps) {
+        this.emps = emps;
+    }
 
     public Deparment() {
     }

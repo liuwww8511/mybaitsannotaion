@@ -7,4 +7,19 @@
 		select id, dept_name deptname from Department where id = #{id}
 	</select>
 
+
+	<!--Deparment getone2(Integer id);-->
+	<select id="getone2" resultMap="vivi8">
+		SELECT dp.id,dp.dept_name,em.id eid ,em.last_name,em.email  FROM
+		Department dp LEFT JOIN tbl_employee1 em ON dp.id = em.did where dp.id = #{id}
+	</select>
+	<resultMap id="vivi8" type="com.vivi.mybatis.beans.Deparment">
+       <id column="id" property="id"></id>
+		<result column="dept_name" property="deptname"></result>
+		<collection property="emps" ofType="com.vivi.mybatis.beans.Employee">
+			<id column="eid" property="id"></id>
+			<result column="last_name" property="lastName"></result>
+			<result column="email" property="lastName"></result>
+		</collection>
+	</resultMap>
 </mapper>

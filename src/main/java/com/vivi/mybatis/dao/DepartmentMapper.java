@@ -4,4 +4,7 @@ import com.vivi.mybatis.beans.Deparment;
 
 public interface DepartmentMapper {
      Deparment getone1(Integer id);
+
+
+     Deparment getone2(Integer id);
 }
